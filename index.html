@@ -2,259 +2,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAMAICA SHOP</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 20px;
-      background: #071b12;
-      color: #f5f0dc;
-      font-family: Arial, sans-serif;
-    }
-    .container { max-width: 700px; margin: auto; }
-    header { text-align: center; padding: 20px 0 25px; }
-    h1 { color: #e6bd54; font-size: 30px; margin: 5px; }
-    .subtitle { color: #a9b9a9; }
-    .categories {
-      display: flex;
-      gap: 10px;
-      margin: 20px 0;
-    }
-    .categories button {
-      flex: 1;
-      padding: 12px 5px;
-      border: 1px solid #315a3e;
-      border-radius: 10px;
-      background: #102b1c;
-      color: white;
-      cursor: pointer;
-    }
-    .categories button.active {
-      background: #d5a934;
-      color: #102016;
-      font-weight: bold;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 13px;
-    }
-    .product {
-      background: #102b1c;
-      border: 1px solid #244b32;
-      border-radius: 14px;
-      padding: 15px;
-    }
-    .product-icon { font-size: 36px; margin-bottom: 12px; }
-    .product h3 { font-size: 16px; margin: 5px 0 8px; }
-    .product p { color: #a9b9a9; font-size: 13px; min-height: 32px; }
-    .price { color: #e6bd54; font-size: 18px; font-weight: bold; }
-    .add, .checkout {
-      width: 100%;
-      border: 0;
-      border-radius: 9px;
-      padding: 12px;
-      margin-top: 12px;
-      background: #d5a934;
-      color: #102016;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .cart {
-      margin-top: 25px;
-      padding: 18px;
-      background: #102b1c;
-      border: 1px solid #315a3e;
-      border-radius: 14px;
-    }
-    .cart h2 { margin-top: 0; color: #e6bd54; }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 8px 0;
-      border-bottom: 1px solid #315a3e;
-      font-size: 14px;
-    }
-    .total {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 15px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-    .empty { color: #a9b9a9; font-size: 14px; }
-    .hidden { display: none; }
-    @media (max-width: 380px) {
-      body { padding: 12px; }
-      .products { gap: 9px; }
-      .product { padding: 11px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAMAICA SHOP</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 20px;
+  background: #071b12;
+  color: #f5f0dc;
+  font-family: Arial, sans-serif;
+}
+.container { max-width: 650px; margin: auto; }
+header { text-align: center; padding: 20px 0; }
+h1 { color: #e6bd54; margin: 5px; }
+.subtitle { color: #a9b9a9; }
+.categories { display: flex; gap: 10px; margin: 20px 0; }
+.categories button {
+  flex: 1;
+  padding: 14px 5px;
+  border: 1px solid #315a3e;
+  border-radius: 10px;
+  background: #102b1c;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.categories button.active {
+  background: #d5a934;
+  color: #102016;
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+.product {
+  background: #102b1c;
+  border: 1px solid #315a3e;
+  border-radius: 14px;
+  padding: 15px;
+}
+.product-icon { font-size: 32px; }
+.product h3 { font-size: 15px; line-height: 1.4; }
+.price { color: #e6bd54; font-size: 19px; font-weight: bold; }
+.add, .checkout {
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 9px;
+  background: #d5a934;
+  color: #102016;
+  font-weight: bold;
+  cursor: pointer;
+}
+.add:active, .checkout:active { opacity: .7; }
+.cart {
+  margin-top: 25px;
+  padding: 18px;
+  background: #102b1c;
+  border: 1px solid #315a3e;
+  border-radius: 14px;
+}
+.cart h2 { color: #e6bd54; margin-top: 0; }
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #315a3e;
+  font-size: 13px;
+}
+.empty { color: #a9b9a9; }
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 18px;
+}
+@media(max-width:380px) {
+  body { padding: 12px; }
+  .product { padding: 10px; }
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>🇯🇲 JAMAICA SHOP</h1>
-      <div class="subtitle">🌴 Good vibes. Digital goods.</div>
-    </header>
+<div class="container">
 
-    <div class="categories">
-      <button class="active" onclick="showCategory('all', this)">All</button>
-      <button onclick="showCategory('new', this)">New</button>
-      <button onclick="showCategory('popular', this)">Popular</button>
-    </div>
+<header>
+  <h1>🇯🇲 JAMAICA SHOP</h1>
+  <div class="subtitle">🌴 Good vibes. Digital goods.</div>
+</header>
 
-    <div class="products" id="products"></div>
+<div class="categories">
+  <button id="marktplaatsBtn" class="active">Marktplaats</button>
+  <button id="dehandsBtn">2dehands</button>
+</div>
 
-    <section class="cart">
-      <h2>🛒 Your Cart</h2>
-      <div id="cart-items">
-        <p class="empty">Your cart is empty.</p>
-      </div>
-      <div class="total">
-        <span>Total:</span>
-        <span id="total">0 USDT</span>
-      </div>
-      <button class="checkout" onclick="checkout()">Checkout</button>
-    </section>
+<div class="products" id="products"></div>
+
+<section class="cart">
+  <h2>🛒 Your Cart</h2>
+  <div id="cart-items">
+    <p class="empty">Your cart is empty.</p>
   </div>
+  <div class="total">
+    <span>Total:</span>
+    <span id="total">$0.00</span>
+  </div>
+  <button class="checkout" id="checkoutBtn">Checkout</button>
+</section>
 
-  <script>
-    const products = [
-      {
-        id: 1,
-        name: "Design Templates",
-        description: "Creative digital design templates.",
-        price: 5,
-        icon: "🎨",
-        category: ["new", "popular"]
-      },
-      {
-        id: 2,
-        name: "Wallpaper Pack",
-        description: "A collection of stylish wallpapers.",
-        price: 3,
-        icon: "🌴",
-        category: ["new"]
-      },
-      {
-        id: 3,
-        name: "Social Media Kit",
-        description: "Tools for your social media content.",
-        price: 8,
-        icon: "📱",
-        category: ["popular"]
-      },
-      {
-        id: 4,
-        name: "Creator Bundle",
-        description: "A bundle of digital creator resources.",
-        price: 12,
-        icon: "⭐",
-        category: ["new", "popular"]
-      }
-    ];
+</div>
 
-    const cart = {};
+<script>
+const products = [
+  {id: 1, category: "Marktplaats", name: "Selfreg (2–3 дня отлёги)", price: 5},
+  {id: 2, category: "Marktplaats", name: "Selfreg (2–3 дня отлёги)", price: 5},
+  {id: 3, category: "2dehands", name: "Selfreg (2–3 дня отлёги)", price: 5},
+  {id: 4, category: "2dehands", name: "Selfreg (2–3 дня отлёги)", price: 5}
+];
 
-    function renderProducts(category = "all") {
-      const container = document.getElementById("products");
+const cart = {};
+let currentCategory = "Marktplaats";
 
-      const filtered = products.filter(product =>
-        category === "all" || product.category.includes(category)
-      );
+const productsContainer = document.getElementById("products");
+const cartContainer = document.getElementById("cart-items");
+const totalElement = document.getElementById("total");
 
-      container.innerHTML = filtered.map(product => `
-        <div class="product">
-          <div class="product-icon">${product.icon}</div>
-          <h3>${product.name}</h3>
-          <p>${product.description}</p>
-          <div class="price">${product.price} USDT</div>
-          <button class="add" onclick="addToCart(${product.id})">
-            Add to Cart
-          </button>
-        </div>
-      `).join("");
-    }
+function renderProducts() {
+  const filtered = products.filter(
+    product => product.category === currentCategory
+  );
 
-    function showCategory(category, button) {
-      document.querySelectorAll(".categories button").forEach(btn =>
-        btn.classList.remove("active")
-      );
+  productsContainer.innerHTML = "";
 
-      button.classList.add("active");
-      renderProducts(category);
-    }
+  filtered.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "product";
 
-    function addToCart(id) {
-      cart[id] = (cart[id] || 0) + 1;
-      updateCart();
-    }
+    const icon = document.createElement("div");
+    icon.className = "product-icon";
+    icon.textContent = "🌴";
 
-    function updateCart() {
-      const container = document.getElementById("cart-items");
-      const selected = products.filter(product => cart[product.id]);
+    const name = document.createElement("h3");
+    name.textContent = product.name;
 
-      if (selected.length === 0) {
-        container.innerHTML = '<p class="empty">Your cart is empty.</p>';
-      } else {
-        container.innerHTML = selected.map(product => `
-          <div class="cart-item">
-            <span>${product.name} × ${cart[product.id]}</span>
-            <span>${product.price * cart[product.id]} USDT</span>
-          </div>
-        `).join("");
-      }
+    const price = document.createElement("div");
+    price.className = "price";
+    price.textContent = "$" + product.price.toFixed(2);
 
-      const total = selected.reduce(
-        (sum, product) => sum + product.price * cart[product.id], 0
-      );
+    const button = document.createElement("button");
+    button.className = "add";
+    button.textContent = "Add to Cart";
+    button.addEventListener("click", () => addToCart(product.id));
 
-      document.getElementById("total").textContent =
-        total.toFixed(2) + " USDT";
-    }
+    card.append(icon, name, price, button);
+    productsContainer.appendChild(card);
+  });
+}
 
-    function checkout() {
-      const selected = products
-        .filter(product => cart[product.id])
-        .map(product => ({
-          name: product.name,
-          quantity: cart[product.id]
-        }));
+function addToCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  updateCart();
+}
 
-      if (selected.length === 0) {
-        alert("Your cart is empty!");
-        return;
-      }
+function updateCart() {
+  cartContainer.innerHTML = "";
 
-      const total = products.reduce(
-        (sum, product) => sum + product.price * (cart[product.id] || 0), 0
-      );
+  const selected = products.filter(product => cart[product.id]);
 
-      const tg = window.Telegram.WebApp;
+  if (selected.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = "Your cart is empty.";
+    cartContainer.appendChild(empty);
+  }
 
-      if (tg && tg.sendData) {
-        tg.sendData(JSON.stringify({
-          items: selected,
-          total: total
-        }));
-      } else {
-        alert("Please open the shop through our Telegram bot.");
-      }
-    }
+  let total = 0;
 
-    renderProducts();
-    updateCart();
+  selected.forEach(product => {
+    const quantity = cart[product.id];
+    const subtotal = product.price * quantity;
+    total += subtotal;
 
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.ready();
-      window.Telegram.WebApp.expand();
-    }
-  </script>
+    const line = document.createElement("div");
+    line.className = "cart-item";
+
+    const description = document.createElement("span");
+    description.textContent =
+      product.category + " — " + product.name + " × " + quantity;
+
+    const amount = document.createElement("span");
+    amount.textContent = "$" + subtotal.toFixed(2);
+
+    line.append(description, amount);
+    cartContainer.appendChild(line);
+  });
+
+  totalElement.textContent = "$" + total.toFixed(2);
+}
+
+function checkout() {
+  const selected = products
+    .filter(product => cart[product.id])
+    .map(product => ({
+      name: product.category + " — " + product.name,
+      quantity: cart[product.id]
+    }));
+
+  if (selected.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  const total = selected.reduce((sum, item) => {
+    const product = products.find(p =>
+      (p.category + " — " + p.name) === item.name
+    );
+    return sum + product.price * item.quantity;
+  }, 0);
+
+  const tg = window.Telegram && window.Telegram.WebApp;
+
+  if (tg && tg.sendData) {
+    tg.sendData(JSON.stringify({
+      items: selected,
+      total: total
+    }));
+  } else {
+    alert("Please open the shop through our Telegram bot.");
+  }
+}
+
+document.getElementById("marktplaatsBtn").addEventListener("click", function() {
+  currentCategory = "Marktplaats";
+  this.classList.add("active");
+  document.getElementById("dehandsBtn").classList.remove("active");
+  renderProducts();
+});
+
+document.getElementById("dehandsBtn").addEventListener("click", function() {
+  currentCategory = "2dehands";
+  this.classList.add("active");
+  document.getElementById("marktplaatsBtn").classList.remove("active");
+  renderProducts();
+});
+
+document.getElementById("checkoutBtn").addEventListener("click", checkout);
+
+renderProducts();
+updateCart();
+
+if (window.Telegram && window.Telegram.WebApp) {
+  window.Telegram.WebApp.ready();
+  window.Telegram.WebApp.expand();
+}
+</script>
 </body>
 </html>
