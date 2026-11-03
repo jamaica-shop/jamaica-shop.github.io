@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAMAICA SHOP</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: #101810;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 25px 20px;
+    background: linear-gradient(135deg,#193d25,#102016);
+    border-bottom: 3px solid #e4c33e;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo span { color: #e8ca42; }
+
+.subtitle {
+    color: #b5c4b5;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-top: 7px;
+}
+
+.banner {
+    margin: 20px;
+    padding: 25px 20px;
+    border-radius: 18px;
+    background: linear-gradient(120deg,#1c542e,#183b25);
+}
+
+.banner h1 {
+    font-size: 27px;
+    margin: 0 0 10px;
+}
+
+.banner p { color: #d2dfd0; }
+
+.section {
+    padding: 0 20px;
+    margin-top: 28px;
+}
+
+.section h2 { font-size: 20px; }
+
+.categories {
+    display: flex;
+    gap: 10px;
+}
+
+.category {
+    flex: 1;
+    padding: 15px 5px;
+    text-align: center;
+    background: #202a21;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.product {
+    background: #202a21;
+    padding: 15px;
+    border-radius: 14px;
+    border: 1px solid #344735;
+}
+
+.product-icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.product h3 { font-size: 15px; }
+
+.price {
+    color: #e9ca43;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.buy {
+    width: 100%;
+    padding: 11px;
+    background: #34864a;
+    border: none;
+    border-radius: 9px;
+    color: white;
+    font-weight: bold;
+}
+
+footer {
+    padding: 35px 15px;
+    text-align: center;
+    color: #829182;
+    font-size: 11px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🇯🇲 JAMAICA <span>SHOP</span></div>
+    <div class="subtitle">GOOD VIBES · DIGITAL GOODS</div>
+</header>
+
+<div class="banner">
+    <h1>Welcome to Jamaica! 🌴</h1>
+    <p>Discover our digital collection.</p>
+</div>
+
+<div class="section">
+    <h2>Categories</h2>
+    <div class="categories">
+        <div class="category">👤 Accounts</div>
+        <div class="category">✨ New</div>
+        <div class="category">🔥 Popular</div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Our products</h2>
+    <div class="products">
+        <div class="product">
+            <div class="product-icon">🌴</div>
+            <h3>Marktplaats</h3>
+            <div class="price">Coming soon</div>
+            <button class="buy" disabled>Unavailable</button>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">🌞</div>
+            <h3>New products</h3>
+            <div class="price">Coming soon</div>
+            <button class="buy" disabled>Unavailable</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    🇯🇲 JAMAICA SHOP<br><br>
+    GOOD VIBES ONLY
+</footer>
+
+</body>
+</html>
