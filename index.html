@@ -328,11 +328,11 @@ function renderCart() {
         total.toFixed(2) + " USDT";
 }
 
-function checkout() {
+function checkout() function checkout() {
     const selected = products
         .filter(product => cart[product.id])
         .map(product => ({
-            name: product.name,
+            id: product.id,
             quantity: cart[product.id]
         }));
 
@@ -341,7 +341,15 @@ function checkout() {
         return;
     }
 
-    alert("Cart is ready! Payment will be available soon.");
+    const tg = window.Telegram.WebApp;
+
+    if (tg && tg.sendData) {
+        tg.sendData(JSON.stringify({
+            items: selected
+        }));
+    } else {
+        alert("Please open the shop through our Telegram bot.");
+    }
 }
 
 renderProducts();
